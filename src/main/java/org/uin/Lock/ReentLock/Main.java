@@ -8,8 +8,9 @@ import java.util.concurrent.locks.ReentrantLock;
  * @date 2022/3/17/10:58 AM
  */
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        ReentrantLock lock = new ReentrantLock(true);
+
+  public static void main(String[] args) throws InterruptedException {
+    ReentrantLock lock = new ReentrantLock(true);
 //        lock.lock();
 //        lock.lock();
 //        System.out.println("当前加锁几次" + lock.getHoldCount() + "," + "是否被锁" + lock.isLocked());
@@ -23,14 +24,14 @@ public class Main {
 //        TimeUnit.SECONDS.sleep(1);
 //        lock.unlock();
 //        System.out.println("线程1再次释放锁");
-        Runnable action = () -> {
-            System.out.println("线程"+Thread.currentThread().getName()+"开始获取锁。。。");
-            lock.lock();
-            System.out.println("线程"+Thread.currentThread().getName()+"获取到了锁。。。。");
-            lock.unlock();
-        };
-        for (int i = 0; i < 10; i++) {
-            new Thread(action,"T"+i).start();
-        }
+    Runnable action = () -> {
+      System.out.println("线程" + Thread.currentThread().getName() + "开始获取锁。。。");
+      lock.lock();
+      System.out.println("线程" + Thread.currentThread().getName() + "获取到了锁。。。。");
+      lock.unlock();
+    };
+    for (int i = 0; i < 10; i++) {
+      new Thread(action, "T" + i).start();
     }
+  }
 }

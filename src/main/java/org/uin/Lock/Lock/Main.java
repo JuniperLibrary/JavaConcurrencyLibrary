@@ -9,9 +9,10 @@ import java.util.concurrent.locks.ReentrantLock;
  * @date 2022/3/17/1:12 PM
  */
 public class Main {
-    public static void main(String[] args) {
-        Lock lock = new ReentrantLock();
+
+  public static void main(String[] args) {
+    Lock lock = new ReentrantLock();
 
 
-    }
+  }
 }

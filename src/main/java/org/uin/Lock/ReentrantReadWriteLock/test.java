@@ -8,11 +8,12 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @date 2022/3/17/1:14 PM
  */
 public class test {
-    public static void main(String[] args) throws InterruptedException {
-        //默认是不公平的
-        ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
-        lock.writeLock().lock();
-        lock.writeLock().lock();
+
+  public static void main(String[] args) throws InterruptedException {
+    //默认是不公平的
+    ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    lock.writeLock().lock();
+    lock.writeLock().lock();
 //        new Thread(() -> {
 //            lock.writeLock().lock();
 //            System.out.println("成功获取到写锁");
@@ -23,7 +24,7 @@ public class test {
 //        System.out.println("释放第二层锁");
 //        lock.writeLock().unlock();
 
-        //公平的案例
+    //公平的案例
 //        ReentrantReadWriteLock lock = new ReentrantReadWriteLock(true);
 //        Runnable action = () -> {
 //            System.out.println("线程 " + Thread.currentThread().getName() + " 将在1秒后开始获取锁...");
@@ -34,5 +35,5 @@ public class test {
 //        for (int i = 0; i < 10; i++) {   //建立10个线程
 //            new Thread(action, "T" + i).start();
 //        }
-    }
+  }
 }

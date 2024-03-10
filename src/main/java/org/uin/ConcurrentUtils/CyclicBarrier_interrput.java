@@ -9,18 +9,19 @@ import java.util.concurrent.CyclicBarrier;
  * @date 2022/3/21/8:02 PM
  */
 public class CyclicBarrier_interrput {
-    public static void main(String[] args) {
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(10);
-        Runnable r = () -> {
-            try {
-                cyclicBarrier.await();
-            } catch (InterruptedException | BrokenBarrierException e) {
-                e.printStackTrace();
-            }
-        };
-        Thread t = new Thread(r);
-        t.start();
-        t.interrupt();
-        new Thread(r).start();
-    }
+
+  public static void main(String[] args) {
+    CyclicBarrier cyclicBarrier = new CyclicBarrier(10);
+    Runnable r = () -> {
+      try {
+        cyclicBarrier.await();
+      } catch (InterruptedException | BrokenBarrierException e) {
+        e.printStackTrace();
+      }
+    };
+    Thread t = new Thread(r);
+    t.start();
+    t.interrupt();
+    new Thread(r).start();
+  }
 }
