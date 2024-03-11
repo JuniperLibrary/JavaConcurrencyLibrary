@@ -1,6 +1,6 @@
 # JUC
-👽Java中JUC并发编程的demo
 
+👽Java中JUC并发编程的demo
 
 ## ❤️‍🔥相关笔记
 
