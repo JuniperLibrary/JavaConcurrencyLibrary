@@ -29,8 +29,27 @@
 
 
   <!-- 日志输出级别 ，一定要把上边定义的appender 写在下面否者会导致日志文件生成不了，或者为空的日志文件-->
+  <!-- 将原本直接引用同步appender的地方改为引用异步appender -->
   <root level="INFO">
     <appender-ref ref="STDOUT"/>
     <appender-ref ref="FILE"/>
+    <appender-ref ref="ASYNC" />
   </root>
+
+  <!-- 引入异步appender -->
+  <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+    <!-- 可以设置异步appender内部使用的缓冲队列大小 -->
+    <queueSize>1024</queueSize>
+
+    <!-- 当队列满时的行为，默认为false（阻塞），设为true表示不阻塞，可能丢弃日志 -->
+    <neverBlock>true</neverBlock>
+
+    <!-- 设置日志丢失策略，例如当队列满并且neverBlock=false时，可以选择丢弃旧日志 -->
+    <discardingThreshold>0</discardingThreshold>
+
+    <!-- 引用实际执行日志写入的同步appender -->
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
+  </appender>
+
 </configuration>
