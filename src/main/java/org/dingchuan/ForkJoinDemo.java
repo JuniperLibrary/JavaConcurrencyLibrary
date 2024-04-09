@@ -13,7 +13,7 @@ public class ForkJoinDemo {
 
   public static void main(String[] args) {
     int n = 20;
-    // 为了追踪子线程名称，需要重写 ForkJoinWorkerThreadFactory 的方法
+    // 为了追踪子线程名称，需要重写 ForkJoinWorkerThreadFactory 的方法
     final ForkJoinPool.ForkJoinWorkerThreadFactory factory = pool -> {
       final ForkJoinWorkerThread worker = ForkJoinPool.defaultForkJoinWorkerThreadFactory.newThread(
           pool);

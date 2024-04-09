@@ -21,5 +21,11 @@ public class Thread1 extends Thread {
     for (int i = 0; i < 5; i++) {
       System.out.println(Thread.currentThread().getName() + i);
     }
+
+    Thread thread = new Thread(()->{
+      System.out.println("线程2");
+    },"线程2");
+
+    thread.start();
   }
 }
