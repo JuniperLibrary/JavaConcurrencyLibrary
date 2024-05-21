@@ -1,4 +1,4 @@
-package org.dingchuan.lc;
+package org.dingchuan.lc.lc1114;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
