@@ -1,15 +1,12 @@
-package org.uin.Thread;
+package org.basic.newThread;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
+import lombok.extern.slf4j.Slf4j;
 
-/**
- * @author wanglufei
- * @description: TODO
- * @date 2022/3/7/6:27 PM
- */
-public class Thread3 implements Callable<Integer> {
+@Slf4j
+public class ImplementsCallableForThread implements Callable<Integer> {
 
   @Override
   public Integer call() throws Exception {
@@ -22,12 +19,14 @@ public class Thread3 implements Callable<Integer> {
 
 
   public static void main(String[] args) {
-    FutureTask<Integer> futureTask = new FutureTask<Integer>(new Thread3());
+    // 创建异步任务
+    FutureTask<Integer> futureTask = new FutureTask<Integer>(new ImplementsCallableForThread());
+    // 启动线程
     new Thread(futureTask).start();
-    //接收线程运算后的结果
     try {
+      //接收线程运算后的结果
       Integer sum = futureTask.get();
-      System.out.println(sum);
+      log.info("callable future result:", sum);
     } catch (InterruptedException e) {
       e.printStackTrace();
     } catch (ExecutionException e) {
